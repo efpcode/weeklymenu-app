@@ -1,35 +1,90 @@
-@import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Cutive&family=Cutive+Mono&family=Fugaz+One&display=swap');
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-a,
-.green {
+:root {
+  /* Colors from your latest screenshot */
+  --color-primary-1: #E3961F;
+  --color-secondary-1: #E3631F;
+  --color-text-light: #150C76;
+  --color-text-dark: #F9F9F9;
+  --color-background-light: #FFE795;
+  --color-background-dark: #6583A5;
+  --color-cta-highlight-light: #FDD392;
+  --color-cta-highlight-dark: #7670B0;
+  --color-black: #001F41;
+  --color-white: #F9F9F9;
+}
+
+
+
+
+body {
+  font-family: "Cutive", serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: var(--color-black);
+  line-height: 1.7;
+  color: var(--color-white);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Fugaz One";
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+a {
+  font-family: "Cutive Mono", monospace;
+  color: var(--color-cta-highlight-light);
   text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+ul {
+  padding: 0;
+  margin: 0;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+li {
+  list-style-type: none;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+
+button {
+  border: 0;
+}
+
+.code-block {
+  font-family: "Cutive Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header {
+  display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  width: 90%;
+  height: auto;
+  max-width: 27rem;
+  text-align: center;
 }
