@@ -1,50 +1,72 @@
 <template>
-
   <header>
-
-  <button @click="toggleMenu" class="header__button" type="button">
-      <img class="button__img" alt="hamburger menu" src="../assets/hamburgermenu.svg">
+    <button
+      :class="['header__button']"
+      @click="toggleMenu"
+      type="button">
+      <img class="header__button-img" alt="hamburger menu" src="../assets/hamburgermenu.svg">
+      <span class="header__button-label">Menu</span>
     </button>
-    <a :class="{'--visible':menuVisible}" class="header__link" href="/"><img :class="{'--sliding-top':menuVisible}"  alt="Week Menu Logo - Take-off the Week!" class="header__logo" src="../assets/logo.svg" /></a>
-
-
-    <nav v-if="menuVisible" class="header__nav">
-      <ul class="header__list">
-        <li>
-          <a href="/">Home</a>
+    <a :class="{'header__link--visible':menuVisible, 'header__link--active':logoClickable}" class="header__link" href="/"><img :class="{'header__logo--sliding-top':menuVisible}"  alt="Week Menu Logo - Take-off the Week!" class="header__logo" src="../assets/logo.svg" /></a>
+    <transition name="nav-item-fly">
+    <nav v-if="menuVisible" class="nav">
+      <ul class="nav__list">
+          <li
+            :class="['nav__item']">
+          <a :class="['nav__link']" href="#" @click.prevent="goToHome">Home</a>
         </li>
-        <li>
-          <a href="../../public/about.html">About Us</a>
+
+          <li
+            :class="['nav__item']">
+            <a :class="['nav__link']" href="#" @click.prevent="goToAbout">About Us</a>
         </li>
       </ul>
-
     </nav>
+    </transition>
 
   </header>
-
-
 </template>
 
+
 <script setup>
-import {ref} from "vue";
-import {useTouchState} from "../composables/useTouchState.js";
-const {isTouched,     handledTouchStart,
-    handledTouchEnd,
- } = useTouchState();
+import {ref, defineEmits} from "vue";
 
 const menuVisible = ref(false);
+const logoClickable = ref(false);
+
 
 const toggleMenu = () => {
+  const delayClick= 2500;
   menuVisible.value = !menuVisible.value;
+
+  if (menuVisible.value){
+    setTimeout(() => {
+      logoClickable.value=true;
+
+    }, delayClick);
+  }
+else{
+    logoClickable.value=false;
+  }
 }
 
+const emit = defineEmits(['navigateTo']);
 
 
+const goToAbout = () => {
+  emit("navigateTo", "about");
+}
+
+const goToHome = () => {
+  emit("navigateTo", "home");
+}
 
 </script>
 
+
 <style scoped>
 
+/* Header Global Settings */
 header{
   display:flex;
   justify-content:center;
@@ -55,32 +77,8 @@ header{
   margin:0 auto;
 }
 
-.header__link{
-  height:0;
-}
 
-.header__link.--visible{
-  height:auto;
-}
-
-.header__logo {
-  max-width:27rem;
-  height:auto;
-  width:100%;
-  border-radius: 2rem;
-  margin:1rem auto;
-  transition: opacity 1.5s ease-in-out, transform 2.5s ease-in-out;
-  opacity:0;
-  pointer-events:none;
-  transform:translateY(-100%);
-
-}
-
-.header__logo.--sliding-top{
-  opacity:1;
-  pointer-events:auto;
-  transform:translateY(0%);
-}
+/* Header Menu Button */
 
 .header__button{
   background:var(--color-secondary-1);
@@ -88,25 +86,135 @@ header{
   max-width:7rem;
   max-height:7rem;
   border-radius: 2rem;
-  text-align:center;
-
+  padding:0.5rem;
+  flex-direction:column;
+  display:flex;
+  align-items:center;
 
 }
-.button__img{
+
+.header__button-img{
   width: 50%;
   height: auto;
   margin: 0 auto;
 
 }
 
-.header__nav{
- font-size:xx-large;
-  width:100%;
+.header__button-label{
   text-align:center;
-
+  padding:0.5rem;
+color: var(--color-text-dark);
+  font-family: "Cutive Mono", monospace;
+  font-size: x-large;
+  font-weight:600;
 }
 
 
+/* Link in image */
+
+.header__link{
+  height:0;
+  pointer-events:none;
+}
+
+.header__link--visible{
+  height:auto;
+}
+
+.header__link--active{
+  pointer-events:auto;
+}
+
+/* Logo Header Images */
+
+.header__logo {
+  max-width:27rem;
+  height:auto;
+  width:100%;
+  border-radius: 2rem;
+  margin:1rem auto;
+  pointer-events:none;
+  transition: opacity 1.5s ease-in-out, transform 2.5s ease-in-out;
+  opacity:0;
+  transform:translateY(-100%);
+}
+.header__logo--sliding-top{
+  opacity:1;
+  transform:translateY(0%);
+}
+
+/* Header Styling navigation */
+
+.nav{
+  width:100%;
+  font-size:x-large;
+  text-align:center;
+}
+
+.nav-item-fly-enter-from{
+  transform: translateX(-100%);
+  pointer-events:none;
+}
+
+.nav-item-fly-enter-active {
+  transition:transform 2.5s ease;
+}
+
+.nav-item-fly-leave-active {
+  transition:opacity 1.0s ease ,transform 1.5s ease;
+}
+
+.nav-item-fly-leave-from {
+  transform: translateY(0);
+  opacity:1;
+}
+
+.nav-item-fly-leave-to {
+  transform: translateY(-100%);
+  opacity:0;
+  pointer-events:none;
+}
+
+
+.nav__item{
+  border-radius:2rem;
+  margin:1.2rem auto;
+  padding:0;
+}
+
+.nav__link{
+  display: block;
+  width: 100%;
+  padding: 0rem;
+}
+
+
+
+
+/* Utility class */
+.header__button:hover{
+  background:var(--color-primary-1);
+}
+
+.nav__item:hover{
+  background:var(--color-cta-highlight-dark);
+}
+
+/* Remove sticky highlight for ios devices */
+
+
+@media (hover: none) {
+  .header__button {
+ box-shadow: 0 8px 8px -4px  var(--color-secondary-1);
+  }
+
+  .nav__item {
+  background:var(--color-cta-highlight-dark);
+ box-shadow: 0.5rem 0.5rem black, -0.5rem -0.5rem #FFE795;
+  }
+
+
+}
 
 </style>
 

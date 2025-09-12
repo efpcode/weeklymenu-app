@@ -1,23 +1,26 @@
 import { ref } from "vue";
 
+
 export function useTouchState() {
+
   const isTouched = ref(false);
-
-  function handledTouchStart() {
+  function setTouchStart() {
     isTouched.value = true;
-
+    console.log("Touch started")
 
   }
 
-  function handledTouchEnd() {
+  function setTouchEnd() {
+
     isTouched.value = false;
+    console.log("Touch ended");
 
   }
 
   return {
     isTouched,
-    handledTouchStart,
-    handledTouchEnd,
+    setTouchStart,
+    setTouchEnd,
 
 
   };

@@ -30,6 +30,8 @@ body {
   background-color: var(--color-black);
   line-height: 1.7;
   color: var(--color-white);
+  display: flex;
+  justify-content: center;
 }
 
 h1,
@@ -38,14 +40,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Fugaz One";
+  font-family: "Fugaz One", sans-serif;
   font-weight: 400;
   font-style: normal;
 
 }
 
 a {
-  font-family: "Cutive Mono", monospace;
+  font-family: "Cutive", serif;
   color: var(--color-cta-highlight-light);
   text-decoration: none;
 }
@@ -87,4 +89,5 @@ main {
   height: auto;
   max-width: 27rem;
   text-align: center;
+  margin: 0 auto;
 }
