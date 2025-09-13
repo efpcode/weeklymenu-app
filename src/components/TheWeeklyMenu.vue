@@ -200,6 +200,7 @@ watch(isAllDayCompleted, (newValue) => {
   border:0;
   width:100%;
   z-index:1000;
+  position:relative;
 }
 
 .menu-app__message {
