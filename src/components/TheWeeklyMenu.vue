@@ -240,5 +240,14 @@ watch(isAllDayCompleted, (newValue, oldValue) => {
     border: none;
 
   }
+
+}
+@media (hover: none) and (pointer: coarse) {
+  .menu-app__select--base {
+    appearance: auto !important;
+    -webkit-appearance: auto !important;
+    font-size: 1.6rem;
+    min-height: 48px;
+  }
 }
 </style>
