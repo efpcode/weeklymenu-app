@@ -30,6 +30,7 @@ import { ref, computed, defineEmits, watch} from "vue";
 
 const selectedDayId=ref("");
 const enteredDishValue=ref("");
+const hasShownCongrats = ref(false);
 
 const arrows = {
   down: "\u25BC",     // ▼
@@ -72,6 +73,7 @@ const resetAll = () => {
   }));
 
   selectedDayId.value="";
+  hasShownCongrats.value =false;
 
 }
 
@@ -109,10 +111,11 @@ const isAllDayCompleted = computed( () => {
 
 });
 
-watch(isAllDayCompleted, (newValue, oldValue) => {
-  if(newValue === true && oldValue === false){
+watch(isAllDayCompleted, (newValue) => {
+  if(newValue === true && !hasShownCongrats.value){
     emits("showCongrats");
     console.log("Emits!!!!!")
+    hasShownCongrats.value = true;
   }
 });
 
