@@ -16,14 +16,6 @@
 </template>
 
 <style>
-h1{
-  background: var(--color-primary-1);
-  border-radius: 2rem/3rem;
-  text-wrap:balance;
-  color:var(--color-black);
-  margin:0.8rem auto;
-  width:100%;
-}
 
 h2{
   background: var(--color-secondary-1);

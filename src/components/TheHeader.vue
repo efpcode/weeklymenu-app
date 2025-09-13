@@ -7,7 +7,7 @@
       <img class="header__button-img" alt="hamburger menu" src="../assets/hamburgermenu.svg">
       <span class="header__button-label">Menu</span>
     </button>
-    <a :class="{'header__link--visible':menuVisible, 'header__link--active':logoClickable}" class="header__link" href="/"><img :class="{'header__logo--sliding-top':menuVisible}"  alt="Week Menu Logo - Take-off the Week!" class="header__logo" src="../assets/logo.svg" /></a>
+    <a @click.prevent="goToHome" :class="{'header__link--visible':menuVisible, 'header__link--active':logoClickable}" class="header__link" href="#"><img :class="{'header__logo--sliding-top':menuVisible}"  alt="Week Menu Logo - Take-off the Week!" class="header__logo" src="../assets/logo.svg" /></a>
     <transition name="nav-item-fly">
     <nav v-if="menuVisible" class="nav">
       <ul class="nav__list">
