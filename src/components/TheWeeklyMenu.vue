@@ -148,6 +148,8 @@ watch(isAllDayCompleted, (newValue) => {
   appearance: none !important;           /* Crucial! Removes native styling */
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
+  z-index:1000;
+  position:relative;
 }
 
 .menu-app__select--style,
@@ -172,7 +174,8 @@ watch(isAllDayCompleted, (newValue) => {
   margin: 1rem auto;
   background: var(--color-background-dark);
   border-radius:1rem 1rem 3rem 3rem;
-
+  z-index:1000;
+  position:relative;
 
 }
 .menu-app__button--reset-symbol{
@@ -196,6 +199,7 @@ watch(isAllDayCompleted, (newValue) => {
   margin:0.5rem auto;
   border:0;
   width:100%;
+  z-index:1000;
 }
 
 .menu-app__message {

@@ -90,7 +90,8 @@ header{
   flex-direction:column;
   display:flex;
   align-items:center;
-
+  position: relative;
+  z-index: 10;
 }
 
 .header__button-img{
@@ -113,8 +114,12 @@ color: var(--color-text-dark);
 /* Link in image */
 
 .header__link{
-  height:0;
-  pointer-events:none;
+  display: block;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: relative;
+  z-index: 1;
 }
 
 .header__link--visible{
