@@ -32,10 +32,8 @@
   --color-white: #fcf4e8;
 }
 
-
-
 body {
-  font-family: "Cutive", serif;
+  font-family: 'Cutive', serif;
   font-weight: 400;
   font-style: normal;
   background-color: var(--color-black);
@@ -45,20 +43,18 @@ body {
   justify-content: center;
 }
 
-
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: "Fugaz One", sans-serif;
+  font-family: 'Fugaz One', sans-serif;
   font-weight: 400;
   font-style: normal;
-
 }
 
 h1 {
-  font-family: "Fugaz One", sans-serif;
+  font-family: 'Fugaz One', sans-serif;
   font-weight: 400;
   font-style: normal;
   background: var(--color-primary-1);
@@ -69,9 +65,8 @@ h1 {
   width: 100%;
 }
 
-
 a {
-  font-family: "Cutive", serif;
+  font-family: 'Cutive', serif;
   color: var(--color-cta-highlight-light);
   text-decoration: none;
 }
@@ -85,13 +80,12 @@ li {
   list-style-type: none;
 }
 
-
 button {
   border: 0;
 }
 
 .code-block {
-  font-family: "Cutive Mono", monospace;
+  font-family: 'Cutive Mono', monospace;
   font-weight: 400;
   font-style: normal;
 }
@@ -125,16 +119,13 @@ main {
   }
 }
 
-
-
 .menu-app__controls,
 .menu-app__list {
   opacity: 1;
   transition: none;
 }
 
-
-@media screen and (min-width:667px) and (max-width:1023px) {
+@media screen and (min-width: 667px) and (max-width: 1023px) {
 
   .menu-app__controls,
   .menu-app__list {
@@ -150,7 +141,6 @@ main {
     margin: 0rem auto;
     width: 98%;
     height: auto;
-
   }
 
   main {
@@ -186,11 +176,9 @@ main {
     row-gap: 1rem;
     width: 100%;
   }
-
 }
 
-@media only screen and (min-width:1024px) {
-
+@media only screen and (min-width: 1024px) {
   body {
     font-size: 1.2rem;
     animation: fader 1.4s ease-in-out forwards;
@@ -205,7 +193,6 @@ main {
     margin: 0rem auto;
     width: 98%;
     height: auto;
-
   }
 
   main {
@@ -244,8 +231,6 @@ main {
 
   .menu-app__list li:last-child {
     justify-self: end;
-    grid-column-end: -1
+    grid-column-end: -1;
   }
-
-
 }
