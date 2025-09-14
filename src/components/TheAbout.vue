@@ -4,13 +4,13 @@
     <section>
       <h2>Our philosophy</h2>
     <article>
-      We do not need fancy tricks or styling to make a tool that is worth using.
+      We don't need fancy tricks or styling to make a tool that is worth using.
       </article>
     <article>
-      But we tried our best, to make something worth paying attention too!
+      But we tried our best, to make something worth paying attention to!
     </article>
     <article>
-      So, please check our webpage out <span class="heart-unicode">&#10084;</span>
+      So, please check out our webpage  <span class="heart-unicode">&#10084;</span>
 
     </article>
     </section>
