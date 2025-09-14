@@ -204,7 +204,7 @@ header {
 
 @media (hover: none) {
   .header__button {
-    box-shadow: 0 8px 8px -4px var(--color-secondary-1);
+    box-shadow: 0 8px 8px -4px var(--color-text-dark);
   }
 
   .nav__item {
