@@ -32,7 +32,6 @@ body {
   color: var(--color-white);
   display: flex;
   justify-content: center;
-  width: 100%;
 }
 
 
@@ -105,7 +104,31 @@ main {
   margin: 0 auto;
 }
 
+@keyframes fader {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+.menu-app__controls,
+.menu-app__list {
+  opacity: 1;
+  transition: none;
+}
+
+
 @media screen and (min-width:667px) and (max-width:1023px) {
+
+  .menu-app__controls,
+  .menu-app__list {
+    animation: fader 1.4s ease-in-out;
+  }
 
   .header__button {
     align-self: end;
@@ -155,7 +178,12 @@ main {
 
 }
 
-@media screen and (min-width:1024px) {
+@media only screen and (min-width:1024px) {
+
+  body {
+    font-size: 1.2rem;
+    animation: fader 1.4s ease-in-out forwards;
+  }
 
   .header__button {
     align-self: end;

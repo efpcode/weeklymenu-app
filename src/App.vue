@@ -4,6 +4,7 @@ import TheHeader from "./components/TheHeader.vue";
 import TheAbout from "./components/TheAbout.vue";
 import TheWeeklyMenu from "./components/TheWeeklyMenu.vue";
 import TheCongratsOverlay from "./components/TheCongratsOverlay.vue";
+import TheFooter from "./components/TheFooter.vue";
 
 const currentPage = ref("home");
 
@@ -21,9 +22,8 @@ const handleNavigation = (page) =>{
     <TheAbout v-if="currentPage === 'about'"></TheAbout>
     <TheWeeklyMenu v-else @show-congrats="isCongratsShown =true"></TheWeeklyMenu>
     <TheCongratsOverlay v-model:show="isCongratsShown"></TheCongratsOverlay>
-
-
   </main>
+  <TheFooter></TheFooter>
 
 </template>
 

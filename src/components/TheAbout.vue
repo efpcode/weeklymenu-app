@@ -1,4 +1,5 @@
 <template>
+  <section class="about-page">
     <h1>Welcome To Weekly Menu - About Us</h1>
     <section>
       <h2>Our philosophy</h2>
@@ -13,16 +14,27 @@
 
     </article>
     </section>
+
+  </section>
 </template>
 
 <style>
+
+
+.about-page{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:2rem;
+}
 
 h2{
   background: var(--color-secondary-1);
   border-radius: 2rem/3rem;
   text-wrap:balance;
   margin:1rem auto;
-  width:100%;
+  /* width:100%; */
+  padding:1rem;
+  height:auto;
 
 }
 
