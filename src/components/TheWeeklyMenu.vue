@@ -81,12 +81,12 @@ const arrows = {
 
 const days = ref([
   { id: 1, name: 'Monday', dish: '' },
-  { id: 2, name: 'Tuesday', dish: 'a' },
-  { id: 3, name: 'Wednesday', dish: 'a' },
-  { id: 4, name: 'Thursday', dish: 'a' },
-  { id: 5, name: 'Friday', dish: 'a' },
-  { id: 6, name: 'Saturday', dish: 'a' },
-  { id: 0, name: 'Sunday', dish: 'a' },
+  { id: 2, name: 'Tuesday', dish: '' },
+  { id: 3, name: 'Wednesday', dish: '' },
+  { id: 4, name: 'Thursday', dish: '' },
+  { id: 5, name: 'Friday', dish: '' },
+  { id: 6, name: 'Saturday', dish: '' },
+  { id: 0, name: 'Sunday', dish: '' },
 ])
 
 const selectedDay = computed(() => {
