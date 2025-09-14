@@ -191,6 +191,8 @@ color: var(--color-text-dark);
   display: block;
   width: 100%;
   padding: 0rem;
+
+  font-family: "Cutive", serif;
 }
 
 
