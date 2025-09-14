@@ -63,7 +63,7 @@ flex-direction: column;
   margin: 1rem auto;
   font-size:3rem;
   background:var(--color-primary-1);
-  color:var(--color-black);
+  color:var(var(--color-text-dark));
 }
 
 .congrats__heart{

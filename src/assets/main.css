@@ -6,20 +6,31 @@
   box-sizing: border-box;
 }
 
+/* :root { */
+/*   --color-primary-1: #E3961F; */
+/*   --color-secondary-1: #E3631F; */
+/*   --color-text-light: #150C76; */
+/*   --color-text-dark: #F9F9F9; */
+/*   --color-background-light: #FFE795; */
+/*   --color-background-dark: #6583A5; */
+/*   --color-cta-highlight-light: #FDD392; */
+/*   --color-cta-highlight-dark: #7670B0; */
+/*   --color-black: #001F41; */
+/*   --color-white: #F9F9F9; */
+/* } */
 :root {
-  /* Colors from your latest screenshot */
-  --color-primary-1: #E3961F;
-  --color-secondary-1: #E3631F;
-  --color-text-light: #150C76;
-  --color-text-dark: #F9F9F9;
-  --color-background-light: #FFE795;
-  --color-background-dark: #6583A5;
-  --color-cta-highlight-light: #FDD392;
-  --color-cta-highlight-dark: #7670B0;
-  --color-black: #001F41;
-  --color-white: #F9F9F9;
+  /* Refactored based on functional mappings */
+  --color-primary-1: #412b08;
+  --color-secondary-1: #2414a3;
+  --color-text-light: #061732;
+  --color-text-dark: #fcf4e8;
+  --color-background-light: #f9ead2;
+  --color-background-dark: #2414a3;
+  --color-cta-highlight-light: #f9ead2;
+  --color-cta-highlight-dark: #2414a3;
+  --color-black: #061732;
+  --color-white: #fcf4e8;
 }
-
 
 
 
@@ -53,7 +64,7 @@ h1 {
   background: var(--color-primary-1);
   border-radius: 2rem/3rem;
   text-wrap: balance;
-  color: var(--color-black);
+  color: var(--color-white);
   margin: 0.8rem auto;
   width: 100%;
 }

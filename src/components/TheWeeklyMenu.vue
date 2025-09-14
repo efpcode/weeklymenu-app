@@ -17,7 +17,7 @@
         <li :class="['menu-app__item',{'menu-app__item--today':isToday(day.id)}]" :key="day.id" v-for="day in days">
           <h2 :class="['menu-app__header',{'menu-app__header--today': isToday(day.id)}]"> {{ day.name}} </h2>
           <article v-if="day.dish !== ''"> {{ day.dish }} </article>
-          <button @click="removeDayMenu(day.id)" v-if="day.dish !== ''" class="menu-app__button menu-app__button--remove">Remove</button>
+          <button @click="removeDayMenu(day.id)" v-if="day.dish !== ''" class="menu-app__button menu-app__button--remove" :class="{'menu-app__header--today-button':isToday(day.id)}">Remove</button>
         </li>
       </ul>
     </section>
@@ -126,10 +126,15 @@ watch(isAllDayCompleted, (newValue) => {
 
 .menu-app__header {
   background:transparent;
-  color:var(--color-secondary-1);
+  color:var(--color-text-dark);
 }
+
 .menu-app__header--today {
   color:var(--color-text-dark);
+}
+
+.menu-app__header--today-button{
+  border:2px var(--color-text-dark) solid !important;
 }
 
 .menu-app__select,
@@ -237,13 +242,13 @@ watch(isAllDayCompleted, (newValue) => {
 
   .menu-app__select,
   .menu-app__button {
-    box-shadow: 0 8px 8px -4px var(--color-secondary-1);
+    box-shadow: 0 8px 8px -4px var(--color-text-dark);
     background-color:var(--color-secondary-1) !important;
     border: none;
   }
 
   .menu-app__button--reset{
-    box-shadow: 0 8px 8px -4px var(--color-background-light);
+    box-shadow: 0 8px 8px -4px var(--color-text-dark);
     background-color:var(--color-background-dark) !important;
     border: none;
 

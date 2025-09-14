@@ -33,7 +33,6 @@
 
 .menu-app__link:hover{
   background:var(--color-primary-1);
-  color: var(--color-black);
 
 }
 
