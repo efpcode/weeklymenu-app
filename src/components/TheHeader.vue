@@ -1,9 +1,18 @@
 <template>
   <header>
+    <section class="header__buttons">
     <button :class="['header__button']" @click="toggleMenu" type="button">
       <img class="header__button-img" alt="hamburger menu" src="../assets/hamburgermenu.svg" />
       <span class="header__button-label">Menu</span>
     </button>
+
+      <transition name="nav-item-fly">
+    <button v-if="menuVisible" :class="['header__button']" @click="toggleMode" type="button">
+      <img class="header__button-img" alt="hamburger menu" src="../assets/highcontrast.svg" />
+      <span class="header__button-label">Mode</span>
+    </button>
+      </transition>
+      </section>
     <a
       @click.prevent="goToHome"
       :class="{ 'header__link--visible': menuVisible, 'header__link--active': logoClickable }"
@@ -36,6 +45,7 @@ import { ref, defineEmits } from 'vue'
 
 const menuVisible = ref(false)
 const logoClickable = ref(false)
+const mode = ref(false)
 
 const toggleMenu = () => {
   const delayClick = 2500
@@ -50,7 +60,9 @@ const toggleMenu = () => {
   }
 }
 
-const emit = defineEmits(['navigateTo'])
+
+
+const emit = defineEmits(['navigateTo', 'isMode'])
 
 const goToAbout = () => {
   emit('navigateTo', 'about')
@@ -58,6 +70,11 @@ const goToAbout = () => {
 
 const goToHome = () => {
   emit('navigateTo', 'home')
+}
+
+const toggleMode = () => {
+  mode.value = !mode.value;
+  emit('isMode', mode.value)
 }
 </script>
 
@@ -71,6 +88,13 @@ header {
   width: 90%;
   padding: 2rem;
   margin: 0 auto;
+}
+
+.header__buttons{
+  display:flex;
+  flex-direction:row;
+  width:100%;
+  justify-content:space-between;
 }
 
 /* Header Menu Button */
@@ -87,6 +111,8 @@ header {
   align-items: center;
   position: relative;
   z-index: 10;
+  justify-content:space-between;
+  margin:0.2rem;
 }
 
 .header__button-img {
