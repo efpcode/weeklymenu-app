@@ -48,7 +48,7 @@
           <h2 :class="['menu-app__header', { 'menu-app__header--today': isToday(day.id), 'menu-app__header--regular':!props.isHighContrast}]">
             {{ day.name }}
           </h2>
-          <article v-if="day.dish !== '' ":class="[{'menu-app__dish--today':isToday(day.id)}]">{{ day.dish }}</article>
+          <article v-if="day.dish !== '' ":class="['menu-app__dish',{'menu-app__dish--today':isToday(day.id)}]">{{ day.dish }}</article>
           <button
             @click="removeDayMenu(day.id)"
             v-if="day.dish !== ''"
@@ -88,12 +88,12 @@ const arrows = {
 
 const days = ref([
   { id: 1, name: 'Monday', dish: '' },
-  { id: 2, name: 'Tuesday', dish: 'a' },
-  { id: 3, name: 'Wednesday', dish: 'a' },
-  { id: 4, name: 'Thursday', dish: 'a' },
-  { id: 5, name: 'Friday', dish: 'a' },
-  { id: 6, name: 'Saturday', dish: 'a' },
-  { id: 0, name: 'Sunday', dish: 'a' },
+  { id: 2, name: 'Tuesday', dish: '' },
+  { id: 3, name: 'Wednesday', dish: '' },
+  { id: 4, name: 'Thursday', dish: '' },
+  { id: 5, name: 'Friday', dish: '' },
+  { id: 6, name: 'Saturday', dish: '' },
+  { id: 0, name: 'Sunday', dish: '' },
 ])
 
 const selectedDay = computed(() => {
@@ -261,6 +261,9 @@ watch(isAllDayCompleted, (newValue) => {
 
 .menu-app__item--today {
   background: var(--color-background-light);
+}
+.menu-app__dish{
+  border:4px solid var(--color-black);
 }
 .menu-app__dish--today{
   border:4px solid var(--color-text-light);

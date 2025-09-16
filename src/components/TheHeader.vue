@@ -23,7 +23,7 @@
         :class="{ 'header__logo--sliding-top': menuVisible }"
         alt="Week Menu Logo - Take-off the Week!"
         class="header__logo"
-        src="../assets/logo.svg"
+        :src="mode ? highContrastLogo : regularLogo"
     /></a>
     <transition name="nav-item-fly">
       <nav v-if="menuVisible" class="nav">
@@ -43,6 +43,8 @@
 
 <script setup>
 import { ref, defineEmits } from 'vue'
+import regularLogo from '../assets/logo.svg';
+import highContrastLogo from '../assets/logo-contrast.svg';
 
 
 const menuVisible = ref(false)
