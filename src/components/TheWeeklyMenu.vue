@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>Welcome to Weekly Menu - App</h1>
+    <h1 :class="{'menu-app__h1':!props.isHighContrast}">Welcome to Weekly Menu - App</h1>
+    <h2 v-if="!props.isHighContrast">This is a test</h2>
     <section class="menu-app__controls">
       <button
         v-if="isAllDayCompleted"
@@ -48,7 +49,7 @@
           <h2 :class="['menu-app__header', { 'menu-app__header--today': isToday(day.id) }]">
             {{ day.name }}
           </h2>
-          <article v-if="day.dish !== ''">{{ day.dish }}</article>
+          <article v-if="day.dish !== '' ":class="[{'menu-app__dish--today':isToday(day.id)}]">{{ day.dish }}</article>
           <button
             @click="removeDayMenu(day.id)"
             v-if="day.dish !== ''"
@@ -64,12 +65,19 @@
 </template>
 
 <script setup>
-import { ref, computed, defineEmits, watch } from 'vue'
+import { ref, computed, defineEmits, watch, defineProps } from 'vue'
 
 const selectedDayId = ref('')
 const enteredDishValue = ref('')
 const hasShownCongrats = ref(false)
 
+const props = defineProps({
+  isHighContrast:{
+    type: Boolean,
+    required:true,
+  }
+
+});
 const arrows = {
   down: '\u25BC', // ▼
   doubleBar: '\u2551', // ║
@@ -147,17 +155,20 @@ watch(isAllDayCompleted, (newValue) => {
 </script>
 
 <style>
+.menu-app__h1{
+  color:var(--color-black);
+}
 .menu-app__header {
   background: transparent;
   color: var(--color-text-dark);
 }
 
 .menu-app__header--today {
-  color: var(--color-text-dark);
+  color: var(--color-text-light);
 }
 
 .menu-app__header--today-button {
-  border: 4px var(--color-primary-1) solid !important;
+  border: 4px var(--color-background-light) solid !important;
 }
 
 .menu-app__select,
@@ -247,11 +258,14 @@ watch(isAllDayCompleted, (newValue) => {
 }
 
 .menu-app__item--today {
-  background: var(--color-cta-highlight-dark);
+  background: var(--color-background-light);
+}
+.menu-app__dish--today{
+  border:4px solid var(--color-text-light);
 }
 
 .menu-app__item {
-  border: var(--color-cta-highlight-dark) 2px solid;
+  border: var(--color-cta-highlight-light) 2px solid;
   margin: 0.6rem auto;
   padding: 1rem;
   border-radius: 2rem/5rem;
