@@ -7,16 +7,16 @@
 }
 
 :root {
-  --color-primary-1: #E3961F;
-  --color-secondary-1: #E3631F;
-  --color-text-light: #150C76;
-  --color-text-dark: #F9F9F9;
-  --color-background-light: #FFE795;
-  --color-background-dark: #6583A5;
-  --color-cta-highlight-light: #FDD392;
-  --color-cta-highlight-dark: #7670B0;
-  --color-black: #001F41;
-  --color-white: #F9F9F9;
+  --color-primary-1: #e3961f;
+  --color-secondary-1: #e3631f;
+  --color-text-light: #150c76;
+  --color-text-dark: #f9f9f9;
+  --color-background-light: #ffe795;
+  --color-background-dark: #6583a5;
+  --color-cta-highlight-light: #fdd392;
+  --color-cta-highlight-dark: #7670b0;
+  --color-black: #001f41;
+  --color-white: #f9f9f9;
 }
 
 /* Refactored based on functional mappings */
@@ -147,7 +147,8 @@ main {
   main {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 90%;
+    margin: 2rem auto;
   }
 
   .menu-app__controls {
@@ -199,7 +200,8 @@ main {
   main {
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 90%;
+    margin: 2rem auto;
   }
 
   .menu-app__controls {

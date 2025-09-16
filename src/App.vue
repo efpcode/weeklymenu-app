@@ -14,26 +14,31 @@ const isHighContrast = ref(false)
 
 const isConstrastMod = (contrast) => {
   isHighContrast.value = contrast
-  if(contrast){
+  if (contrast) {
     document.body.classList.add('high-contrast')
-  }else{
+  } else {
     document.body.classList.remove('high-contrast')
-
   }
 }
 
 const handleNavigation = (page) => {
   currentPage.value = page
 }
-
 </script>
 
 <template>
-  <TheHeader @navigateTo="handleNavigation" @isMode="isConstrastMod"/>
+  <TheHeader @navigateTo="handleNavigation" @isMode="isConstrastMod" />
   <main>
     <TheAbout v-if="currentPage === 'about'"></TheAbout>
-    <TheWeeklyMenu v-else @show-congrats="isCongratsShown = true" :is-high-contrast="isHighContrast"></TheWeeklyMenu>
-    <TheCongratsOverlay v-model:show="isCongratsShown" :is-high-contrast="isHighContrast"></TheCongratsOverlay>
+    <TheWeeklyMenu
+      v-else
+      @show-congrats="isCongratsShown = true"
+      :is-high-contrast="isHighContrast"
+    ></TheWeeklyMenu>
+    <TheCongratsOverlay
+      v-model:show="isCongratsShown"
+      :is-high-contrast="isHighContrast"
+    ></TheCongratsOverlay>
   </main>
   <TheFooter></TheFooter>
 </template>

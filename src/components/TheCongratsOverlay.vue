@@ -1,7 +1,9 @@
 <template>
   <transition name="fade">
     <aside class="congrats-overlay" v-if="show">
-      <h2 class="congrats__header" :class="{'congrats__header--regular':!props.isHighContrast}" >Great job! Take-off the Week!</h2>
+      <h2 class="congrats__header" :class="{ 'congrats__header--regular': !props.isHighContrast }">
+        Great job! Take-off the Week!
+      </h2>
       <p class="congrats__heart">{{ heart }}</p>
     </aside>
   </transition>
@@ -13,12 +15,11 @@ import { watch, defineProps, defineEmits } from 'vue'
 const props = defineProps({
   show: Boolean,
 
-  isHighContrast:{
+  isHighContrast: {
     type: Boolean,
-    required:true,
+    required: true,
   },
 })
-
 
 const heart = '\u2764'
 
@@ -72,8 +73,8 @@ const emit = defineEmits(['update:show'])
   color: var(--color-text-dark);
 }
 
-.congrats__header--regular{
-  color:var(--color-black);
+.congrats__header--regular {
+  color: var(--color-black);
 }
 
 .congrats__heart {

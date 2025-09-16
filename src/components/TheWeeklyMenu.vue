@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 :class="{'menu-app__h1':!props.isHighContrast}">Welcome to Weekly Menu - App</h1>
+    <h1 :class="{ 'menu-app__h1': !props.isHighContrast }">Welcome to Weekly Menu - App</h1>
     <section class="menu-app__controls">
       <button
         v-if="isAllDayCompleted"
@@ -45,10 +45,23 @@
           :key="day.id"
           v-for="day in days"
         >
-          <h2 :class="['menu-app__header', { 'menu-app__header--today': isToday(day.id), 'menu-app__header--regular':!props.isHighContrast}]">
+          <h2
+            :class="[
+              'menu-app__header',
+              {
+                'menu-app__header--today': isToday(day.id),
+                'menu-app__header--regular': !props.isHighContrast,
+              },
+            ]"
+          >
             {{ day.name }}
           </h2>
-          <article v-if="day.dish !== '' ":class="['menu-app__dish',{'menu-app__dish--today':isToday(day.id)}]">{{ day.dish }}</article>
+          <article
+            v-if="day.dish !== ''"
+            :class="['menu-app__dish', { 'menu-app__dish--today': isToday(day.id) }]"
+          >
+            {{ day.dish }}
+          </article>
           <button
             @click="removeDayMenu(day.id)"
             v-if="day.dish !== ''"
@@ -71,12 +84,11 @@ const enteredDishValue = ref('')
 const hasShownCongrats = ref(false)
 
 const props = defineProps({
-  isHighContrast:{
+  isHighContrast: {
     type: Boolean,
-    required:true,
-  }
-
-});
+    required: true,
+  },
+})
 const arrows = {
   down: '\u25BC', // ▼
   doubleBar: '\u2551', // ║
@@ -153,8 +165,8 @@ watch(isAllDayCompleted, (newValue) => {
 </script>
 
 <style>
-.menu-app__h1{
-  color:var(--color-black);
+.menu-app__h1 {
+  color: var(--color-black);
 }
 .menu-app__header {
   background: transparent;
@@ -165,8 +177,8 @@ watch(isAllDayCompleted, (newValue) => {
   color: var(--color-text-light) !important;
 }
 
-.menu-app__header--regular{
-  color:var(--color-secondary-1);
+.menu-app__header--regular {
+  color: var(--color-secondary-1);
 }
 
 .menu-app__header--today-button {
@@ -262,11 +274,11 @@ watch(isAllDayCompleted, (newValue) => {
 .menu-app__item--today {
   background: var(--color-background-light);
 }
-.menu-app__dish{
-  border:4px solid var(--color-black);
+.menu-app__dish {
+  border: 4px solid var(--color-black);
 }
-.menu-app__dish--today{
-  border:4px solid var(--color-text-light);
+.menu-app__dish--today {
+  border: 4px solid var(--color-text-light);
 }
 
 .menu-app__item {

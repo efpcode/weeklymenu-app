@@ -1,19 +1,23 @@
 <template>
   <header>
     <section class="header__buttons">
-    <button :class="['header__button']" @click="toggleMenu" type="button">
-        <img class="header__button-img" alt="hamburger menu" src="../assets/hamburgermenu.svg"
-          :style="{transform: menuVisible ? 'rotate(90deg)':''}" />
-        <span class="header__button-label">{{ menuVisible? 'Close': 'Menu'}}</span>
-    </button>
+      <button :class="['header__button']" @click="toggleMenu" type="button">
+        <img
+          class="header__button-img"
+          alt="hamburger menu"
+          src="../assets/hamburgermenu.svg"
+          :style="{ transform: menuVisible ? 'rotate(90deg)' : '' }"
+        />
+        <span class="header__button-label">{{ menuVisible ? 'Close' : 'Menu' }}</span>
+      </button>
 
       <transition name="nav-item-fly">
-    <button v-if="menuVisible" :class="['header__button']" @click="toggleMode" type="button">
-      <img class="header__button-img" alt="hamburger menu" src="../assets/highcontrast.svg" />
-      <span class="header__button-label">Mode</span>
-    </button>
+        <button v-if="menuVisible" :class="['header__button']" @click="toggleMode" type="button">
+          <img class="header__button-img" alt="hamburger menu" src="../assets/highcontrast.svg" />
+          <span class="header__button-label">Mode</span>
+        </button>
       </transition>
-      </section>
+    </section>
     <a
       @click.prevent="goToHome"
       :class="{ 'header__link--visible': menuVisible, 'header__link--active': logoClickable }"
@@ -43,9 +47,8 @@
 
 <script setup>
 import { ref, defineEmits } from 'vue'
-import regularLogo from '../assets/logo.svg';
-import highContrastLogo from '../assets/logo-contrast.svg';
-
+import regularLogo from '../assets/logo.svg'
+import highContrastLogo from '../assets/logo-contrast.svg'
 
 const menuVisible = ref(false)
 const logoClickable = ref(false)
@@ -64,8 +67,6 @@ const toggleMenu = () => {
   }
 }
 
-
-
 const emit = defineEmits(['navigateTo', 'isMode'])
 
 const goToAbout = () => {
@@ -77,7 +78,7 @@ const goToHome = () => {
 }
 
 const toggleMode = () => {
-  mode.value = !mode.value;
+  mode.value = !mode.value
   emit('isMode', mode.value)
 }
 </script>
@@ -94,11 +95,11 @@ header {
   margin: 0 auto;
 }
 
-.header__buttons{
-  display:flex;
-  flex-direction:row;
-  width:100%;
-  justify-content:space-between;
+.header__buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
 }
 
 /* Header Menu Button */
@@ -115,8 +116,8 @@ header {
   align-items: center;
   position: relative;
   z-index: 10;
-  justify-content:space-between;
-  margin:0.2rem;
+  justify-content: space-between;
+  margin: 0.2rem;
 }
 
 .header__button-img {
