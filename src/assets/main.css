@@ -120,6 +120,13 @@ main {
   }
 }
 
+.menu-app__controls {
+
+  position: relative;
+  z-index: 1000;
+
+}
+
 .menu-app__controls,
 .menu-app__list {
   opacity: 1;
@@ -140,7 +147,6 @@ main {
   h1 {
     padding: 2rem;
     margin: 0rem auto;
-    width: 98%;
     height: auto;
   }
 
@@ -180,10 +186,12 @@ main {
   }
 }
 
-@media only screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   body {
     font-size: 1.2rem;
     animation: fader 1.4s ease-in-out forwards;
+    width: 90%;
+    margin: 2rem auto;
   }
 
   .header__button {
@@ -192,8 +200,7 @@ main {
 
   h1 {
     padding: 2rem;
-    margin: 0rem auto;
-    width: 98%;
+    margin: 2rem auto;
     height: auto;
   }
 
