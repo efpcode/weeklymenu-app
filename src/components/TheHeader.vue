@@ -2,8 +2,9 @@
   <header>
     <section class="header__buttons">
     <button :class="['header__button']" @click="toggleMenu" type="button">
-      <img class="header__button-img" alt="hamburger menu" src="../assets/hamburgermenu.svg" />
-      <span class="header__button-label">Menu</span>
+        <img class="header__button-img" alt="hamburger menu" src="../assets/hamburgermenu.svg"
+          :style="{transform: menuVisible ? 'rotate(90deg)':''}" />
+        <span class="header__button-label">{{ menuVisible? 'Close': 'Menu'}}</span>
     </button>
 
       <transition name="nav-item-fly">
@@ -42,6 +43,7 @@
 
 <script setup>
 import { ref, defineEmits } from 'vue'
+
 
 const menuVisible = ref(false)
 const logoClickable = ref(false)

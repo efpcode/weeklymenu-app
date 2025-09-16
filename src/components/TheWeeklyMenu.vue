@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1 :class="{'menu-app__h1':!props.isHighContrast}">Welcome to Weekly Menu - App</h1>
-    <h2 v-if="!props.isHighContrast">This is a test</h2>
     <section class="menu-app__controls">
       <button
         v-if="isAllDayCompleted"
@@ -46,7 +45,7 @@
           :key="day.id"
           v-for="day in days"
         >
-          <h2 :class="['menu-app__header', { 'menu-app__header--today': isToday(day.id) }]">
+          <h2 :class="['menu-app__header', { 'menu-app__header--today': isToday(day.id), 'menu-app__header--regular':!props.isHighContrast}]">
             {{ day.name }}
           </h2>
           <article v-if="day.dish !== '' ":class="[{'menu-app__dish--today':isToday(day.id)}]">{{ day.dish }}</article>
@@ -148,7 +147,6 @@ const isAllDayCompleted = computed(() => {
 watch(isAllDayCompleted, (newValue) => {
   if (newValue === true && !hasShownCongrats.value) {
     emits('showCongrats')
-    console.log('Emits!!!!!')
     hasShownCongrats.value = true
   }
 })
@@ -164,7 +162,11 @@ watch(isAllDayCompleted, (newValue) => {
 }
 
 .menu-app__header--today {
-  color: var(--color-text-light);
+  color: var(--color-text-light) !important;
+}
+
+.menu-app__header--regular{
+  color:var(--color-secondary-1);
 }
 
 .menu-app__header--today-button {

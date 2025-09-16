@@ -33,7 +33,7 @@ const handleNavigation = (page) => {
   <main>
     <TheAbout v-if="currentPage === 'about'"></TheAbout>
     <TheWeeklyMenu v-else @show-congrats="isCongratsShown = true" :is-high-contrast="isHighContrast"></TheWeeklyMenu>
-    <TheCongratsOverlay v-model:show="isCongratsShown"></TheCongratsOverlay>
+    <TheCongratsOverlay v-model:show="isCongratsShown" :is-high-contrast="isHighContrast"></TheCongratsOverlay>
   </main>
   <TheFooter></TheFooter>
 </template>
