@@ -121,10 +121,8 @@ main {
 }
 
 .menu-app__controls {
-
   position: relative;
   z-index: 1000;
-
 }
 
 .menu-app__controls,
@@ -134,7 +132,6 @@ main {
 }
 
 @media screen and (min-width: 667px) and (max-width: 1023px) {
-
   .menu-app__controls,
   .menu-app__list {
     animation: fader 1.4s ease-in-out;
