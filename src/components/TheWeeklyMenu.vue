@@ -2,10 +2,18 @@
   <div>
     <h1 :class="{ 'menu-app__h1': !props.isHighContrast }">Welcome to Weekly Menu - App</h1>
     <section class="menu-app__controls">
-      <button v-if="isAllDayCompleted" @click="resetAll" class="menu-app__button menu-app__button--reset">
-        <span class="menu-app__button--reset-symbol">{{ arrows.reset }}</span>Reset Week Menu
+      <button
+        v-if="isAllDayCompleted"
+        @click="resetAll"
+        class="menu-app__button menu-app__button--reset"
+      >
+        <span class="menu-app__button--reset-symbol">{{ arrows.reset }}</span
+        >Reset Week Menu
       </button>
-      <select class="menu-app__select menu-app__select--style menu-app__select--base" v-model="selectedDayId">
+      <select
+        class="menu-app__select menu-app__select--style menu-app__select--base"
+        v-model="selectedDayId"
+      >
         <option value="" selected="selected">
           Day {{ arrows.down }}{{ arrows.doubleBar }}{{ arrows.up }}
         </option>
@@ -13,8 +21,18 @@
           {{ isToday(day.id) ? arrows.right : '' }} {{ day.dish ? arrows.dish : '' }} {{ day.name }}
         </option>
       </select>
-      <input class="menu-app__input" type="text" v-model="enteredDishValue" placeholder="Enter a dish " />
-      <button v-if="selectedDayId !== ''" @click="addDish" type="button" class="menu-app__button menu-app__button--add">
+      <input
+        class="menu-app__input"
+        type="text"
+        v-model="enteredDishValue"
+        placeholder="Enter a dish "
+      />
+      <button
+        v-if="selectedDayId !== ''"
+        @click="addDish"
+        type="button"
+        class="menu-app__button menu-app__button--add"
+      >
         {{ isAddButton ? 'Add' : 'Replace' }} Dish
       </button>
       <p class="menu-app__message" v-show="selectedDayId === ''">Please select a day</p>
@@ -22,22 +40,34 @@
 
     <section class="menu-app__view">
       <ul :class="['menu-app__list']">
-        <li :class="['menu-app__item', { 'menu-app__item--today': isToday(day.id) }]" :key="day.id" v-for="day in days">
-          <h2 :class="[
-            'menu-app__header',
-            {
-              'menu-app__header--today': isToday(day.id),
-              'menu-app__header--regular': !props.isHighContrast,
-            },
-          ]">
+        <li
+          :class="['menu-app__item', { 'menu-app__item--today': isToday(day.id) }]"
+          :key="day.id"
+          v-for="day in days"
+        >
+          <h2
+            :class="[
+              'menu-app__header',
+              {
+                'menu-app__header--today': isToday(day.id),
+                'menu-app__header--regular': !props.isHighContrast,
+              },
+            ]"
+          >
             {{ day.name }}
           </h2>
-          <article v-if="day.dish !== ''" :class="['menu-app__dish', { 'menu-app__dish--today': isToday(day.id) }]">
+          <article
+            v-if="day.dish !== ''"
+            :class="['menu-app__dish', { 'menu-app__dish--today': isToday(day.id) }]"
+          >
             {{ day.dish }}
           </article>
-          <button @click="removeDayMenu(day.id)" v-if="day.dish !== ''"
+          <button
+            @click="removeDayMenu(day.id)"
+            v-if="day.dish !== ''"
             class="menu-app__button menu-app__button--remove"
-            :class="{ 'menu-app__header--today-button': isToday(day.id) }">
+            :class="{ 'menu-app__header--today-button': isToday(day.id) }"
+          >
             Remove
           </button>
         </li>
@@ -269,7 +299,6 @@ watch(isAllDayCompleted, (newValue) => {
 }
 
 @media (hover: none) {
-
   .menu-app__select,
   .menu-app__button {
     box-shadow: 0 8px 8px -4px var(--color-text-dark);
