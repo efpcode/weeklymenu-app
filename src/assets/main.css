@@ -132,6 +132,7 @@ main {
 }
 
 @media screen and (min-width: 667px) and (max-width: 1023px) {
+
   .menu-app__controls,
   .menu-app__list {
     animation: fader 1.4s ease-in-out;
@@ -166,8 +167,7 @@ main {
     justify-content: center;
     align-self: center;
     text-align: center;
-    height: auto;
-    padding: 0.7rem;
+    gap: 2rem;
   }
 
   .menu-app__item {
@@ -217,11 +217,12 @@ main {
 
   .menu-app__message {
     display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: x-large;
+    align-items: center;
     justify-content: center;
-    align-self: center;
     text-align: center;
-    height: auto;
-    padding: 2rem;
   }
 
   .menu-app__item {

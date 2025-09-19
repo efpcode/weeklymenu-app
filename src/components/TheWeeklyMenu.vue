@@ -2,18 +2,10 @@
   <div>
     <h1 :class="{ 'menu-app__h1': !props.isHighContrast }">Welcome to Weekly Menu - App</h1>
     <section class="menu-app__controls">
-      <button
-        v-if="isAllDayCompleted"
-        @click="resetAll"
-        class="menu-app__button menu-app__button--reset"
-      >
-        <span class="menu-app__button--reset-symbol">{{ arrows.reset }}</span
-        >Reset Week Menu
+      <button v-if="isAllDayCompleted" @click="resetAll" class="menu-app__button menu-app__button--reset">
+        <span class="menu-app__button--reset-symbol">{{ arrows.reset }}</span>Reset Week Menu
       </button>
-      <select
-        class="menu-app__select menu-app__select--style menu-app__select--base"
-        v-model="selectedDayId"
-      >
+      <select class="menu-app__select menu-app__select--style menu-app__select--base" v-model="selectedDayId">
         <option value="" selected="selected">
           Day {{ arrows.down }}{{ arrows.doubleBar }}{{ arrows.up }}
         </option>
@@ -21,53 +13,31 @@
           {{ isToday(day.id) ? arrows.right : '' }} {{ day.dish ? arrows.dish : '' }} {{ day.name }}
         </option>
       </select>
-      <input
-        class="menu-app__input"
-        type="text"
-        v-model="enteredDishValue"
-        placeholder="Enter a dish "
-      />
-      <button
-        v-if="selectedDayId !== ''"
-        @click="addDish"
-        type="button"
-        class="menu-app__button menu-app__button--add"
-      >
+      <input class="menu-app__input" type="text" v-model="enteredDishValue" placeholder="Enter a dish " />
+      <button v-if="selectedDayId !== ''" @click="addDish" type="button" class="menu-app__button menu-app__button--add">
         {{ isAddButton ? 'Add' : 'Replace' }} Dish
       </button>
-      <p class="menu-app__message" v-if="selectedDayId === ''">Please select a day</p>
+      <p class="menu-app__message" v-show="selectedDayId === ''">Please select a day</p>
     </section>
 
     <section class="menu-app__view">
       <ul :class="['menu-app__list']">
-        <li
-          :class="['menu-app__item', { 'menu-app__item--today': isToday(day.id) }]"
-          :key="day.id"
-          v-for="day in days"
-        >
-          <h2
-            :class="[
-              'menu-app__header',
-              {
-                'menu-app__header--today': isToday(day.id),
-                'menu-app__header--regular': !props.isHighContrast,
-              },
-            ]"
-          >
+        <li :class="['menu-app__item', { 'menu-app__item--today': isToday(day.id) }]" :key="day.id" v-for="day in days">
+          <h2 :class="[
+            'menu-app__header',
+            {
+              'menu-app__header--today': isToday(day.id),
+              'menu-app__header--regular': !props.isHighContrast,
+            },
+          ]">
             {{ day.name }}
           </h2>
-          <article
-            v-if="day.dish !== ''"
-            :class="['menu-app__dish', { 'menu-app__dish--today': isToday(day.id) }]"
-          >
+          <article v-if="day.dish !== ''" :class="['menu-app__dish', { 'menu-app__dish--today': isToday(day.id) }]">
             {{ day.dish }}
           </article>
-          <button
-            @click="removeDayMenu(day.id)"
-            v-if="day.dish !== ''"
+          <button @click="removeDayMenu(day.id)" v-if="day.dish !== ''"
             class="menu-app__button menu-app__button--remove"
-            :class="{ 'menu-app__header--today-button': isToday(day.id) }"
-          >
+            :class="{ 'menu-app__header--today-button': isToday(day.id) }">
             Remove
           </button>
         </li>
@@ -168,6 +138,7 @@ watch(isAllDayCompleted, (newValue) => {
 .menu-app__h1 {
   color: var(--color-black);
 }
+
 .menu-app__header {
   background: transparent;
   color: var(--color-text-dark);
@@ -195,10 +166,12 @@ watch(isAllDayCompleted, (newValue) => {
   color: var(--color-text-dark);
   width: 100%;
   border: none;
+  height: auto;
 }
 
 .menu-app__select--base {
-  appearance: none !important; /* Crucial! Removes native styling */
+  appearance: none !important;
+  /* Crucial! Removes native styling */
   -webkit-appearance: none !important;
   -moz-appearance: none !important;
   z-index: 1000;
@@ -207,10 +180,10 @@ watch(isAllDayCompleted, (newValue) => {
 
 .menu-app__select--style,
 .menu-app__button--add {
-  padding: 1rem;
   border-radius: 3rem;
   border: none;
   margin: 0.6rem auto;
+  padding: 1rem;
 }
 
 .menu-app__select:hover,
@@ -222,13 +195,13 @@ watch(isAllDayCompleted, (newValue) => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
   margin: 1rem auto;
   background: var(--color-background-dark);
   border-radius: 1rem 1rem 3rem 3rem;
   z-index: 1000;
   position: relative;
 }
+
 .menu-app__button--reset-symbol {
   font-size: 2.2rem;
   letter-spacing: 0.4rem;
@@ -243,40 +216,47 @@ watch(isAllDayCompleted, (newValue) => {
 .menu-app__input {
   background-color: var(--color-background-light);
   border-radius: 2rem;
-  padding: 2rem;
-  font-size: large;
+  font-size: x-large;
   color: var(--color-text-light);
   font-weight: 700;
-  margin: 0.5rem auto;
+  margin: 0.6rem auto;
   border: 0;
   width: 100%;
   z-index: 1000;
   position: relative;
+  padding: 2rem;
 }
 
 .menu-app__message {
   font-family: 'Cutive Mono', monospace;
   background: var(--color-cta-highlight-light);
   color: var(--color-text-light);
-  font-size: x-large;
+  font-size: 1.4rem;
   border-radius: 2rem;
   text-wrap: balance;
-  width: 100%;
   margin: 0.6rem auto;
+  padding: 0.5rem;
+  min-height: 4.3rem;
+  justify-content: center;
+  height: auto;
+  text-align: center;
+  align-items: center;
 }
 
 .menu-app__list {
   padding: 1rem;
   position: relative;
-  margin: 0.5rem auto;
+  margin: 0 auto;
 }
 
 .menu-app__item--today {
   background: var(--color-background-light);
 }
+
 .menu-app__dish {
   border: 4px solid var(--color-black);
 }
+
 .menu-app__dish--today {
   border: 4px solid var(--color-text-light);
 }
@@ -289,6 +269,7 @@ watch(isAllDayCompleted, (newValue) => {
 }
 
 @media (hover: none) {
+
   .menu-app__select,
   .menu-app__button {
     box-shadow: 0 8px 8px -4px var(--color-text-dark);
@@ -302,12 +283,13 @@ watch(isAllDayCompleted, (newValue) => {
     border: none;
   }
 }
-@media (hover: none) and (pointer: coarse) {
-  .menu-app__select--base {
-    appearance: auto !important;
-    -webkit-appearance: auto !important;
-    font-size: 1.6rem;
-    min-height: 48px;
-  }
-}
+
+/* @media (hover: none) and (pointer: coarse) { */
+/*   .menu-app__select--base { */
+/*     appearance: auto !important; */
+/*     -webkit-appearance: auto !important; */
+/*     /* font-size: 1.6rem; */
+/*     /* min-height: 48px; */
+/*   } */
+/* } */
 </style>
